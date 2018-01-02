@@ -361,3 +361,6 @@ try {
 ```
 
 >**Note**: I strongly recommend to catch **ColumnSortableException** because there is a user input in question (GET parameter) and any user can modify it in such way that package throws ColumnSortableException with code 0.
+
+>02-01-2018:
+Sample For Related Data Use: @sortablelink('address|state', 'state') ++ account model has relation name address => state
