@@ -24,8 +24,8 @@ trait Sortable
      */
     public function scopeSortable($query, $defaultSortParameters = null)
     {
-        if (Request::has('sort') && Request::has('order')) {
-            return $this->queryOrderBuilder($query, Request::only(['sort', 'order']));
+        if (Request::has('orderBy' ) && Request::has('sortedBy')) {
+            return $this->queryOrderBuilder($query, Request::only(['orderBy' , 'sortedBy' ]));
         } elseif ( ! is_null($defaultSortParameters)) {
             $defaultSortArray = $this->formatToSortParameters($defaultSortParameters);
 
@@ -86,11 +86,11 @@ trait Sortable
      */
     private function parseSortParameters(array $sortParameters)
     {
-        $column = array_get($sortParameters, 'sort');
+        $column = array_get($sortParameters, 'orderBy' );
         if (empty($column)) {
             return [null, null];
         }
-        $direction = array_get($sortParameters, 'order', []);
+        $direction = array_get($sortParameters, 'sortedBy' , []);
         if ( ! in_array($direction, ['asc', 'desc'])) {
             $direction = Config::get('columnsortable.default_direction', 'asc');
         }
@@ -148,12 +148,12 @@ trait Sortable
         }
         $configDefaultOrder = Config::get('columnsortable.default_direction', 'asc');
         if (is_string($sort)) {
-            return ['sort' => $sort, 'order' => $configDefaultOrder];
+            return ['orderBy'  => $sort, 'sortedBy'  => $configDefaultOrder];
         }
 
-        return (key($sort) === 0) ? ['sort' => $sort[0], 'order' => $configDefaultOrder] : [
-            'sort'  => key($sort),
-            'order' => reset($sort),
+        return (key($sort) === 0) ? ['orderBy'  => $sort[0], 'sortedBy'  => $configDefaultOrder] : [
+            'orderBy'   => key($sort),
+            'sortedBy'  => reset($sort),
         ];
     }
     /**

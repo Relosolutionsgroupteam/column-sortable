@@ -112,10 +112,10 @@ class SortableLink
     {
         $icon = self::selectIcon($sortColumn);
 
-        if (Request::get('sort') == $sortParameter && in_array(Request::get('order'), ['asc', 'desc'])) {
-            $icon      .= (Request::get('order') === 'asc' ? Config::get('columnsortable.asc_suffix', '-asc') :
+        if (Request::get('orderBy') == $sortParameter && in_array(Request::get('sortedBy'), ['asc', 'desc'])) {
+            $icon      .= (Request::get('sortedBy') === 'asc' ? Config::get('columnsortable.asc_suffix', '-asc') :
                 Config::get('columnsortable.desc_suffix', '-desc'));
-            $direction = Request::get('order') === 'desc' ? 'asc' : 'desc';
+            $direction = Request::get('sortedBy') === 'desc' ? 'asc' : 'desc';
 
             return [$icon, $direction];
         } else {
@@ -194,7 +194,7 @@ class SortableLink
         $orderClassPrefix = Config::get('columnsortable.order_anchor_class_prefix', null);
         if ($orderClassPrefix !== null && self::shouldShowActive($sortColumn)) {
             $class[] =
-                $orderClassPrefix.(Request::get('order') === 'asc' ? Config::get('columnsortable.asc_suffix', '-asc') :
+                $orderClassPrefix.(Request::get('sortedBy') === 'asc' ? Config::get('columnsortable.asc_suffix', '-asc') :
                     Config::get('columnsortable.desc_suffix', '-desc'));
         }
 
@@ -209,7 +209,7 @@ class SortableLink
      */
     private static function shouldShowActive($sortColumn)
     {
-        return Request::has('sort') && Request::get('sort') == $sortColumn;
+        return Request::has('orderBy') && Request::get('orderBy') == $sortColumn;
     }
 
 
@@ -226,10 +226,10 @@ class SortableLink
             return is_array($element) ? $element : strlen($element);
         };
 
-        $persistParameters = array_filter(Request::except('sort', 'order', 'page'), $checkStrlenOrArray);
+        $persistParameters = array_filter(Request::except('orderBy', 'sortedBy', 'page'), $checkStrlenOrArray);
         $queryString       = http_build_query(array_merge($queryParameters, $persistParameters, [
-            'sort'  => $sortParameter,
-            'order' => $direction,
+            'orderBy'  => $sortParameter,
+            'sortedBy' => $direction,
         ]));
 
         return $queryString;
