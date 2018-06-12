@@ -15,7 +15,7 @@
   - [Full Example](#full-example)
     - [Routes](#routes)
     - [Controller's `index()` method](#controllers-index-method)
-    - [View](#view)
+    - [View](#view)+++
 - [HasOne / BelongsTo Relation sorting](#hasone--belongsto-relation-sorting)
     - [Define hasOne relation](#define-hasone-relation)
     - [Define belongsTo relation](#define-belongsto-relation)
