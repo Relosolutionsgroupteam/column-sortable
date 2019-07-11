@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Column sorting for Laravel 5.5-7](#column-sorting-for-laravel-55-7)
+- [Column sorting for Laravel 5.5-8](#column-sorting-for-laravel-55-8)
 - [Setup](#setup)
   - [Composer](#composer)
     - [Laravel's >=5.5 auto discovery](#laravels-55-auto-discovery)
@@ -13,29 +13,16 @@
   - [Configuration in few words](#configuration-in-few-words)
   - [Font Awesome (default font classes)](#font-awesome-default-font-classes)
     - [Font Awesome 5](#font-awesome-5)
-  - [Full Example](#full-example)
-    - [Routes](#routes)
-    - [Controller's `index()` method](#controllers-index-method)
-    - [View (_pagination included_)](#view-_pagination-included_)
-- [HasOne / BelongsTo Relation sorting](#hasone--belongsto-relation-sorting)
-  - [Define hasOne relation](#define-hasone-relation)
-  - [Define belongsTo relation](#define-belongsto-relation)
-  - [Define `$sortable` arrays](#define-sortable-arrays)
-  - [Blade and relation sorting](#blade-and-relation-sorting)
-- [ColumnSortable overriding (advanced)](#columnsortable-overriding-advanced)
-- [Aliasing](#aliasing)
-  - [Using `withCount()`](#using-withcount)
-- [Exception to catch](#exception-to-catch)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Column sorting for Laravel 5.5-7
+# Column sorting for Laravel 5.5-8
 [![Latest Version](https://img.shields.io/github/release/Kyslik/column-sortable.svg?style=flat-square)](https://github.com/Kyslik/column-sortable/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/Kyslik/column-sortable.svg?style=flat-square)](https://packagist.org/packages/Kyslik/column-sortable)
-[![Build Status](https://travis-ci.org/Kyslik/column-sortable.svg?branch=L5.5-7)](https://travis-ci.org/Kyslik/column-sortable)
+[![Build Status](https://travis-ci.org/Kyslik/column-sortable.svg?branch=L5.8)](https://travis-ci.org/Kyslik/column-sortable)
 
-Package for handling column sorting in Laravel 5.[5-7]. For earlier versions of Laravel checkout branch [L5.1-3](https://github.com/Kyslik/column-sortable/tree/L5.1-3)
+Package for handling column sorting in Laravel 5.[5-8]. For earlier versions of Laravel checkout branch [L5.1-3](https://github.com/Kyslik/column-sortable/tree/L5.1-3)
 
 # Setup
 
@@ -46,7 +33,7 @@ Pull this package in through Composer (development/latest version `dev-master`)
 ```json
 {
     "require": {
-        "kyslik/column-sortable": "5.7.*"
+        "kyslik/column-sortable": "5.8.*"
     }
 }
 ```
@@ -356,7 +343,7 @@ See [#44](https://github.com/Kyslik/column-sortable/issues/44) for more informat
 
 ## Using `withCount()`
 
-Aliasing is useful when you want to sort results with [`withCount()`](https://laravel.com/docs/5.6/eloquent-relationships#counting-related-models), see [issue #49](https://github.com/Kyslik/column-sortable/issues/49) for more information.
+Aliasing is useful when you want to sort results with [`withCount()`](https://laravel.com/docs/5.8/eloquent-relationships#counting-related-models), see [issue #49](https://github.com/Kyslik/column-sortable/issues/49) for more information.
 
 Aliasing is useful when you want to sort results with [`withCount()`](https://laravel.com/docs/5.5/eloquent-relationships#counting-related-models), see [issue #49](https://github.com/Kyslik/column-sortable/issues/49) for more information.
 
