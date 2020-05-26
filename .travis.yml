@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 7.1
   - 7.2
 
 git:
@@ -9,6 +8,7 @@ git:
 
 env:
   - version=L5-8
+  - version=L6
 
 sudo: false
 
@@ -23,6 +23,7 @@ before_install:
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest;
   - if [[ $version = 'L5-8' ]]; then travis_retry composer require --dev --update-with-dependencies --no-suggest --no-interaction orchestra/testbench:"3.8.*" phpunit/phpunit:"^7.0"; fi
+  - if [[ $version = 'L6' ]]; then travis_retry composer require --dev --update-with-dependencies --no-suggest --no-interaction orchestra/testbench:"4.*" phpunit/phpunit:"^8.0"; fi
 
 script: vendor/bin/phpunit
 
@@ -30,4 +31,5 @@ branches:
   only:
     - master
     - L5.8
+    - L6
 
